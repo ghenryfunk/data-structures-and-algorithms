@@ -107,7 +107,6 @@ const fizzbuzz = (arr) => {
       outputArr.push(value);
     }
   });
-  console.log(outputArr);
   return outputArr;
 };
 
