@@ -38,27 +38,29 @@ let $ = createSnippetWithJQuery(`
 
 const templateWithJQuery = () => {
   // Solution code here...
-  let $template = $('#template');
-  let $h2El = $('h2');
-  let $h3El = $('h3');
-  let $pEl = $('p');
   starWarsPeople.forEach((index) => {
-    let $newSection = $template.clone();
+    let $template = $('#template').html();
+    // console.log('$template is ', $template);
+    // let $h2El = $('h2').html();
+    // let $h3El = $('h3').html();
+    // let $pEl = $('p').html();
+    let $newSection = $(`<section>${$template}</section>`).clone();
+    // console.log('$newSection is ', $newSection);
+    // console.log('object keys are ', Object.keys($newSection));
     // name stuff assigned and appended to h2
-    $h2El.text(index.name);
-    $newSection.append($h2El);
+    $newSection.find('h2').text(index.name);
+
 
     // height assigned and appended to h3
-    $h3El.text(index.height);
-    $newSection.append($h3El);
+    $newSection.find('h3').text(index.height);
 
     // eye color assigned and appended to p
-    $pEl.text(index.eye_color);
-    $newSection.append($pEl);
+    $newSection.find('p').text(index.eye_color);
+
+    $('main').append($newSection);
 
 
   });
-  // NOT SURE WHAT I AM DOING WRONG...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -160,7 +162,7 @@ const listFoods = (recipe) => {
   //   console.log(gruffaloCrumble.ingredients[i]);
   // }
   stringifiedArray.forEach((i) => {
-    console.log(stringifiedArray[i]);
+    // console.log(stringifiedArray[i]);
   });
   // Solution code here...
   return result;
